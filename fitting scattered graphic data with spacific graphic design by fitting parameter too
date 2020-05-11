@@ -1,0 +1,31 @@
+#fitting parabolic curve with given data. in Juliabox
+data_tofit = readdlm("Week3_PR_Data.dat",'\t')
+x = data_tofit[:,1]
+y = data_tofit[:,2]
+using Plots
+gr()
+scatter(x,y,legend=:false,title="data_tofit")
+
+#creating function for fitting parabolic scattered data
+function parabfit(x)
+    v = a*x^2 + b*x + c
+    return v
+end
+#start assuming parameter values of a,b,c
+a=1
+b=1
+c=1
+plot(parabfit, -5, 5)
+#here you can also use parameter learning algorithm's and other different kind of methods to learn proper fitting value of a,b and c.
+#a,b,c = 4,4,4
+#a,b,c = 2,2,2
+#a,b,c = -1,-1,-1
+#a,b,c = -3,-3,-3
+#a,b,c = -1,1,0
+#a,b,c = -4,12,1
+#a,b,c = -2,8,-5
+#a,b,c = -1,5,-3
+#a,b,c = -1,1,-3
+a,b,c = -1,4,-3
+plot(x,y,line=:scatter,title = "data_tofit_parabolic")
+plot!(parabfit,0,6)
